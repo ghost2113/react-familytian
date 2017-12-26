@@ -1,0 +1,90 @@
+*********************************
+*********************************
+****init项目****
+
+创建文件夹并进入
+
+mkdir react-family && cd react-family
+
+init npm
+
+npm init 按照提示填写项目基本信息
+
+webpack
+*********************************
+*********************************
+****安装 webpack
+
+npm install --save-dev webpack
+
+Q: 什么时候用--save-dev，什么时候用--save？
+
+A: --save-dev 是你开发时候依赖的东西，--save 是你发布之后还依赖的东西。看这里
+
+根据webpack文档编写最基础的配置文件
+
+新建webpack开发配置文件 touch webpack.dev.config.js
+
+webpack.dev.config.js
+
+const path = require('path');
+
+module.exports = {
+
+    /*入口*/
+    entry: path.join(__dirname, 'src/index.js'),
+
+    /*输出到dist文件夹，输出文件名字为bundle.js*/
+    output: {
+        path: path.join(__dirname, './dist'),
+        filename: 'bundle.js'
+    }
+};
+*********************************
+*********************************
+****学会使用webpack编译文件
+
+新建入口文件
+
+mkdir src && touch ./src/index.js
+
+src/index.js 添加内容
+
+document.getElementById('app').innerHTML = "Webpack works"
+
+现在我们执行命令 webpack --config webpack.dev.config.js
+
+webpack如果没有全局安装，这里会报错哦。命令建议全局安装，如果编译有问题看这里 #1 (comment)
+我们可以看到生成了dist文件夹和bundle.js。
+
+现在我们测试下~
+
+dist文件夹下面新建一个index.html
+
+touch ./dist/index.html
+
+dist/index.html填写内容
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="./bundle.js" charset="utf-8"></script>
+</body>
+</html>
+用浏览器打开index.html,可以看到Webpack works!
+*********************************
+*********************************
+****babel
+
+通俗的说，就是我们可以用ES6, ES7等来编写代码，Babel会把他们统统转为ES5。
+
+babel-core 调用Babel的API进行转码
+babel-loader
+babel-preset-es2015 用于解析 ES6
+babel-preset-react 用于解析 JSX
+babel-preset-stage-0 用于解析 ES7 提案
