@@ -4,7 +4,9 @@
   "description": "first project of tian",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-build": "webpack --config webpack.dev.config.js",
+    "start": "webpack-dev-server --config webpack.dev.config.js  --color --progress --hot"
   },
   "author": "tianjinying",
   "license": "ISC",
@@ -16,10 +18,12 @@
     "babel-preset-stage-0": "^6.24.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
   }
 }
